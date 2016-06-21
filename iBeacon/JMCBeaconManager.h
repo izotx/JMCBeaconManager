@@ -35,6 +35,8 @@
 -(void)registerRegionWithProximityId:(NSString*)pid andIdentifier:(NSString *)identifier major:(int)major andMinor:(int)minor;
 
 
+-(void)registerBeaconWithProximityId:(NSString*)pid andIdentifier:(NSString *)identifier;
+
 /**
  *  Checks if beacon is supported
  *

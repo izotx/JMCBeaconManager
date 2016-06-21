@@ -59,8 +59,10 @@ class ViewController: UIViewController {
         {
             
             //TODO: Register beacon that you would like to monitor:
-            jmcBeaconManager.registerRegionWithProximityId("f7826da6-4fa2-4e98-8024-bc5b71e0893e", andIdentifier: "f7826da6-4fa2-4e98-8024-bc5b71e0893e", major: Int32(45074), andMinor: Int32(36073))
-
+            //jmcBeaconManager.registerRegionWithProximityId("f7826da6-4fa2-4e98-8024-bc5b71e0893e", andIdentifier: "f7826da6-4fa2-4e98-8024-bc5b71e0893e", major: Int32(45074), andMinor: Int32(36073))
+            jmcBeaconManager.registerBeaconWithProximityId("f7826da6-4fa2-4e98-8024-bc5b71e0893e", andIdentifier: "pid")
+            
+            
             jmcBeaconManager.beaconFound = self.beaconsFound
             jmcBeaconManager.regionEvent = self.regionEvent
             jmcBeaconManager.startMonitoring()
@@ -152,7 +154,7 @@ class ViewController: UIViewController {
     
     /*TESTING*/
     @IBAction func functestAddController(sender: AnyObject) {
-        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("immediateController") as UIViewController
+        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("immediateController") as! UIViewController
         displayController(vc)
     }
 
