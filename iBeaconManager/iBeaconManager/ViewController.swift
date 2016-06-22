@@ -13,14 +13,28 @@ class ViewController: UIViewController {
     let beaconManager = JMCBeaconManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        beaconManager.checkStatus()
-        ///Wait for notificatio
-        startMonitoring()
-    
+
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsEnabled(_:)), name: iBeaconNotifications.iBeaconEnabled.rawValue, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsDisabled(_:)), name: iBeaconNotifications.iBeaconDisabled.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsRanged(_:)), name: iBeaconNotifications.BeaconProximity.rawValue, object: nil)
+        startMonitoring()
     }
 
+
+    
+    //MARK: notifications
+    func beaconsEnabled(notification:NSNotification){
+        ///Wait for notificatio
+      
+    
+    }
+
+    func beaconsDisabled(notification:NSNotification){
+        
+    }
+
+    
     /**Called when the beacons are ranged*/
     func beaconsRanged(notification:NSNotification){
         if let visibleIbeacons = notification.object as? [iBeacon]
@@ -38,25 +52,22 @@ class ViewController: UIViewController {
         
         //major 2505 minor 36274
         beaconManager.registerBeacons([kontaktIOBeacon, estimoteBeacon])
-//        beaconManager.statusCheck()
-//        beaconManager.startMonitoring()
         
-        if beaconManager.statusCheck(){
-            beaconManager.startMonitoring()
+        beaconManager.startMonitoring({ 
+            
+            }) { (messages) in
+                    print("Error Messages \(messages)")
         }
+        
         
         /**updates user's visited places information*/
         func stateCallback(beacon:iBeacon)->Void{
-            // user.addLocation(beacon)
+            //FIXME - unused
         }
         
         /**updates user's visited places information*/
         func rangeCallback (beacon:iBeacon)->Void{
             //FIXME - unused
-            //  user.addLocation(beacon)
-            
-            
-            
         }
         
         beaconManager.stateCallback = stateCallback
