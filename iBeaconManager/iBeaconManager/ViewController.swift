@@ -8,12 +8,20 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, PWDisplayLinkerDelegate{
+    
+    
+    @IBOutlet var squareView: SquareView!
+    var displayLinker: PWDisplayLinker!
+    
     //New instance
     let beaconManager = JMCBeaconManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.displayLinker = PWDisplayLinker(delegate: self)
+        
         beaconManager.checkStatus()
         ///Wait for notificatio
         startMonitoring()
@@ -25,8 +33,15 @@ class ViewController: UIViewController {
     func beaconsRanged(notification:NSNotification){
         if let visibleIbeacons = notification.object as? [iBeacon]
         {
+            for beacon in visibleIbeacons{
+                self.squareView.addBeacon(beacon: beacon)
+            }
             print(visibleIbeacons)
         }
+    }
+    
+    func displayWillUpdateWithDeltaTime(deltaTime: CFTimeInterval) {
+        self.squareView.moveBeacons() // Moves the beacons
     }
     
     func startMonitoring(){
