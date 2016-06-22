@@ -34,7 +34,7 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate{
         if let visibleIbeacons = notification.object as? [iBeacon]
         {
             for beacon in visibleIbeacons{
-                self.squareView.addBeacon(beacon: beacon)
+                self.squareView.addBeacon(beacon)
             }
             print(visibleIbeacons)
         }

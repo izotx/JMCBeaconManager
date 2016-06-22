@@ -11,14 +11,22 @@ import CoreLocation
 
 class SquareView: UIView, UIGestureRecognizerDelegate{
 
-
+    /// Stores a dictionary with the possible ranges (near, far, immediate....)
     var ranges : [CLProximity : DistanceRange] = [:]
+    
+    /// iBeacon Shape Spinning speed
     var speed = 0.005
     
     
     override func drawRect(rect: CGRect) {
-
-        drawCanvas()
+        
+        let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+        
+        /// Draws the ranges for Unknown, Far, Near, Immediate
+        drawRange(center, distance: .Unknown)
+        drawRange(center, distance: .Far)
+        drawRange(center, distance: .Near)
+        drawRange(center, distance: .Immediate)
     }
     
     func handleTap(point: CGPoint, completion: (beacon: iBeacon?) -> Void) {
@@ -27,6 +35,7 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
             
             for beacon in range.beacons{
             
+                // Calculates a margin of error since the beacons are moving
                 if beacon.point.x <= point.x + 20 && beacon.point.x >= point.x - 20{
                     if beacon.point.y <= point.y + 20 && beacon.point.y >= point.y - 20{
                         completion(beacon: beacon.beacon)
@@ -34,19 +43,8 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
                 }
             }
         }
-        
+        // nothing to do...
         completion(beacon: nil)
-    }
-    
-    func drawCanvas(){
-        
-        let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
-    
-        drawRange(center, distance: .Unknown)
-        drawRange(center, distance: .Far)
-        drawRange(center, distance: .Near)
-        drawRange(center, distance: .Immediate)
-
     }
     
        
@@ -55,6 +53,7 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
         var radius = CGFloat(self.bounds.width/2)
         var color = UIColor.grayColor()
         
+        // Calculates the range for each proximity and selesct the color
         if distance == .Far {
             radius -= 50
             color = UIColor.greenColor()
@@ -73,12 +72,11 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
         
      
         shapeLayer.fillColor = color.CGColor
-       
         shapeLayer.strokeColor = color.CGColor
-        //you can change the line width
         shapeLayer.lineWidth = 3.0
         
         
+        /// Builds the DistanceRange Object and saves to the ranges dictionary
         let range = DistanceRange()
         range.shapeLayer = shapeLayer
         range.type = distance
@@ -92,6 +90,8 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
     
     func addBeacon(beacon: iBeacon){
         
+        
+        // Checks if the beacon already exists
         for range in ranges.values{
             var index = 0
             for beaconShape in range.beacons{
@@ -103,35 +103,35 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
                     }else {
                         range.beacons.removeAtIndex(index)
                     }
-                    
-                    
                 }
                 index += 1
             }
         }
         
+        /// Build BeaconShape object
         let beaconShape = BeaconShape()
         beaconShape.beacon = beacon
         beaconShape.speed = speed
-        ranges[beacon.proximity]?.beacons.append(beaconShape)
+        ranges[beacon.proximity]?.beacons.append(beaconShape)   // adds to the data structure
         
         let count = ranges[beacon.proximity]?.beacons.count
         
-        var t = CGFloat(0)
         
+        /// Calculates equal distances beetween beacons
+        var t = CGFloat(0)
+
         if count != nil{
             t = CGFloat(2 * M_PI) / CGFloat(count!)
         }
-        
-        let rand = Float(2) * Float(Float(arc4random()) / Float(UInt32.max))
-        
-        /// Calculates equal distances beetween beacons
+        //let rand = Float(2) * Float(Float(arc4random()) / Float(UInt32.max))
         var index = 0
         for beaconShape in (ranges[beacon.proximity]?.beacons)! {
             
             beaconShape.t = (t * CGFloat(index)) //+ CGFloat(rand)
             index += 1
             
+            
+            /// The max number of beacons before resizing
             var max = 25
             
             if beacon.proximity == .Immediate {
@@ -142,6 +142,7 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
                 max = 18
             }
             
+            /// Resizes all beacon of the distance layer if there is more than max
             if count > max {
                 let circunference = CGFloat(2 * M_PI)  * ranges[beacon.proximity]!.radius
                  beaconShape.radius = (circunference) / CGFloat(3 * count!)
@@ -149,6 +150,7 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
         }
     }
     
+    /// Calculates a specific x and y that is on the range border
     func calculateBorderPoint(radius: CGFloat, center: CGPoint, t: CGFloat) -> CGPoint{
         
         let x = center.x + radius * cos(t)
@@ -162,18 +164,23 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
         
         let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
         
+        /// For each proximity range
         for range in ranges.values{
         
             for beaconShape in range.beacons{
                 
+                ///Removes the beacon from screen
                 if beaconShape.shapeLayer != nil{
                     beaconShape.shapeLayer.removeFromSuperlayer()
                 }
                 
+                // Updates the beacon shape speed
                 beaconShape.speed = speed
                 
+                // calculates a new position
                 let position = calculateBorderPoint(range.radius, center: center, t: beaconShape.nextT())
                 
+                // builds a new shape
                 let shape = UIBezierPath(arcCenter: position, radius: beaconShape.radius, startAngle: CGFloat(0), endAngle: CGFloat(M_PI * 2), clockwise: true)
                 let shapeLayer = CAShapeLayer()
                 shapeLayer.path = shape.CGPath
@@ -186,11 +193,11 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
                 beaconShape.shapeLayer = shapeLayer
                 beaconShape.point = position
                 
+                // re adds the shape to screen
                 self.layer.addSublayer(shapeLayer)
 
             }
         }
-        
     }
 }
 
@@ -208,6 +215,7 @@ class BeaconShape {
     var radius: CGFloat = 20
     
     
+    /// Increments the t value according to the speed
     func nextT() -> CGFloat{
         
         var s = speed
