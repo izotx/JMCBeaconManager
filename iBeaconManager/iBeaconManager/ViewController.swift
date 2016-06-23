@@ -51,6 +51,7 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
         
         // Removes old beacons
         NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(ViewController.removeOldBeacons), userInfo: nil, repeats: true)
+
     }
     
     func handleTap(sender: UITapGestureRecognizer? = nil) {

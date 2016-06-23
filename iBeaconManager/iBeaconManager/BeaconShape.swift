@@ -19,11 +19,14 @@ class BeaconShape {
     /// t is a parametric variable in the range 0 to 2π, interpreted geometrically as the angle that the ray from (a, b) to (x, y) makes with the positive x-axis.
     var t : CGFloat = 0
     
+    var blink = false
     
     var distance: CLProximity!
     
     var point: CGPoint!
-    var radius: CGFloat = 20
+    var radius: CGFloat = 15
+    
+    var color = UIColor(red: 0.392, green: 1.000, blue: 0.050, alpha: 1.000)
     
     
     /// Increments the t value according to the speed

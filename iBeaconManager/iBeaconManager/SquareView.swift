@@ -166,7 +166,7 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
     func drawGradient(center: CGPoint, distance: CLProximity){
         
         var radius = CGFloat(self.bounds.width/2)
-        var color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
+        let color = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
         
         // Calculates the range for each proximity and selesct the color
         if distance == .Far {
@@ -376,11 +376,11 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
                 shapeLayer.path = shape.CGPath
                 
                 if selectedBeacon != nil && (selectedBeacon?.beacon.isEqual(beaconShape.beacon))!{
-                    shapeLayer.fillColor = UIColor.blueColor().CGColor
-                    shapeLayer.strokeColor = UIColor.blueColor().CGColor
-                }else{
-                    shapeLayer.fillColor = UIColor(red: 0.392, green: 1.000, blue: 0.050, alpha: 1.000).CGColor
+                    shapeLayer.fillColor = UIColor(red: 0.5, green: 1.000, blue: 0.10, alpha: 1.000).CGColor
                     shapeLayer.strokeColor = UIColor(red: 0.392, green: 1.000, blue: 0.050, alpha: 1.000).CGColor
+                }else{
+                    shapeLayer.fillColor = beaconShape.color.CGColor
+                    shapeLayer.strokeColor = beaconShape.color.CGColor
                 }
                 shapeLayer.lineWidth = 1.0
                 
@@ -401,11 +401,4 @@ class DistanceRange{
     var shapeLayer : CAShapeLayer!
     var radius: CGFloat!
 }
-
-
-
-
-
-
-
 
