@@ -8,25 +8,77 @@
 
 import UIKit
 
-class ViewController: UIViewController, PWDisplayLinkerDelegate{
+class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecognizerDelegate{
     
     
+    @IBOutlet var beaconIDLabel: UILabel!
     @IBOutlet var squareView: SquareView!
+    var tap : UITapGestureRecognizer!
+    
+    var beaconsDate: [String:NSDate] = [:]
+    var beacons : [String:iBeacon] = [:]
+    
     var displayLinker: PWDisplayLinker!
     
     //New instance
     let beaconManager = JMCBeaconManager()
     override func viewDidLoad() {
+        
+        beaconIDLabel.textColor = UIColor.whiteColor()
+        
+        self.view.backgroundColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
+        squareView.backgroundColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
+
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         self.displayLinker = PWDisplayLinker(delegate: self)
+        tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTap(_:)))
+        tap.delegate = self
+        
+        squareView.addGestureRecognizer(tap)
         
         beaconManager.checkStatus()
         ///Wait for notificatio
         startMonitoring()
     
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsRanged(_:)), name: iBeaconNotifications.BeaconProximity.rawValue, object: nil)
+        
+        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("removeOldBeacons"), userInfo: nil, repeats: true)
+    }
+    
+    func removeOldBeacons(){
+    
+        for id in beaconsDate.keys{
+            
+            let now = NSDate()
+            let beaconDate = beaconsDate[id]
+            let date = beaconDate?.addSeconds(4)
+        
+            
+            if date!.isLessThanDate(now) {
+                squareView.removeBeacon(beacons[id]!)
+                beacons.removeValueForKey(id)
+                beaconsDate.removeValueForKey(id)
+            }
+        }
+    }
+    
+    func handleTap(sender: UITapGestureRecognizer? = nil) {
+        
+        if sender != nil{
+            
+            squareView.handleTap(sender!.locationInView(squareView), completion: { (beacon) in
+                
+                if beacon != nil{
+                    self.beaconIDLabel.text = "Beacon ID: \(beacon!.id)"
+                    
+                    let color = UIColor.blueColor()
+                    let icon = UIImage(named: "beacon.png")
+                    SCLAlertView().showCustom("iBeacon", subTitle: "Beacon id: \(beacon!.id)", color:color, icon: icon!)
+                }
+            })
+        }
     }
 
     /**Called when the beacons are ranged*/
@@ -35,8 +87,10 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate{
         {
             for beacon in visibleIbeacons{
                 self.squareView.addBeacon(beacon)
+                beaconsDate[beacon.id] = NSDate()
+                beacons[beacon.id] = beacon
+                print(NSDate().description)
             }
-            print(visibleIbeacons)
         }
     }
     
@@ -88,5 +142,59 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate{
     
     
 
+}
+
+extension NSDate {
+    
+    func isGreaterThanDate(dateToCompare: NSDate) -> Bool {
+        var isGreater = false
+        
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedDescending {
+            isGreater = true
+        }
+        
+        return isGreater
+    }
+    
+    func isLessThanDate(dateToCompare: NSDate) -> Bool {
+        var isLess = false
+        
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedAscending {
+            isLess = true
+        }
+        
+        return isLess
+    }
+    
+    func equalToDate(dateToCompare: NSDate) -> Bool {
+        var isEqualTo = false
+        
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedSame {
+            isEqualTo = true
+        }
+        
+        return isEqualTo
+    }
+    
+    func addDays(daysToAdd: Int) -> NSDate {
+        let secondsInDays: NSTimeInterval = Double(daysToAdd) * 60 * 60 * 24
+        let dateWithDaysAdded: NSDate = self.dateByAddingTimeInterval(secondsInDays)
+        
+        return dateWithDaysAdded
+    }
+    
+    func addHours(hoursToAdd: Int) -> NSDate {
+        let secondsInHours: NSTimeInterval = Double(hoursToAdd) * 60 * 60
+        let dateWithHoursAdded: NSDate = self.dateByAddingTimeInterval(secondsInHours)
+        
+        return dateWithHoursAdded
+    }
+    
+    func addSeconds(secondsToAdd: Int) -> NSDate {
+        let seconds: NSTimeInterval = Double(secondsToAdd)
+        let dateWithSecondsAdded: NSDate = self.dateByAddingTimeInterval(seconds)
+        
+        return dateWithSecondsAdded
+    }
 }
 

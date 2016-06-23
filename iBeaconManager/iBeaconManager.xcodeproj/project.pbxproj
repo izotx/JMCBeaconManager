@@ -15,6 +15,9 @@
 		40207C381D19D7A20050EE55 /* JMCBeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40207C371D19D7A20050EE55 /* JMCBeaconManager.swift */; };
 		40207C3A1D19D7B40050EE55 /* JMCBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40207C391D19D7B40050EE55 /* JMCBluetoothManager.swift */; };
 		40207C3C1D19D81E0050EE55 /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40207C3B1D19D81E0050EE55 /* DataStructures.swift */; };
+		552920A21D1C62D200756B64 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552920A01D1C62D200756B64 /* SCLAlertView.swift */; };
+		552920A31D1C62D200756B64 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552920A11D1C62D200756B64 /* SCLExtensions.swift */; };
+		552920A71D1C642C00756B64 /* beacon.png in Resources */ = {isa = PBXBuildFile; fileRef = 552920A61D1C642C00756B64 /* beacon.png */; };
 		558D2BCE1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D2BCB1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift */; };
 		558D2BCF1D19E87000BC55DA /* PWDisplayLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D2BCC1D19E87000BC55DA /* PWDisplayLinker.swift */; };
 		558D2BD01D19E87000BC55DA /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D2BCD1D19E87000BC55DA /* SquareView.swift */; };
@@ -31,6 +34,9 @@
 		40207C371D19D7A20050EE55 /* JMCBeaconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMCBeaconManager.swift; sourceTree = "<group>"; };
 		40207C391D19D7B40050EE55 /* JMCBluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMCBluetoothManager.swift; sourceTree = "<group>"; };
 		40207C3B1D19D81E0050EE55 /* DataStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
+		552920A01D1C62D200756B64 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
+		552920A11D1C62D200756B64 /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
+		552920A61D1C642C00756B64 /* beacon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beacon.png; sourceTree = "<group>"; };
 		558D2BCB1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDisplayLinkerDelegate.swift; sourceTree = "<group>"; };
 		558D2BCC1D19E87000BC55DA /* PWDisplayLinker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDisplayLinker.swift; sourceTree = "<group>"; };
 		558D2BCD1D19E87000BC55DA /* SquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
@@ -66,6 +72,8 @@
 		40207C241D19D7750050EE55 /* iBeaconManager */ = {
 			isa = PBXGroup;
 			children = (
+				552920A01D1C62D200756B64 /* SCLAlertView.swift */,
+				552920A11D1C62D200756B64 /* SCLExtensions.swift */,
 				40207C371D19D7A20050EE55 /* JMCBeaconManager.swift */,
 				40207C391D19D7B40050EE55 /* JMCBluetoothManager.swift */,
 				40207C3B1D19D81E0050EE55 /* DataStructures.swift */,
@@ -74,6 +82,7 @@
 				558D2BCC1D19E87000BC55DA /* PWDisplayLinker.swift */,
 				558D2BCD1D19E87000BC55DA /* SquareView.swift */,
 				40207C271D19D7750050EE55 /* ViewController.swift */,
+				552920A61D1C642C00756B64 /* beacon.png */,
 				40207C291D19D7750050EE55 /* Main.storyboard */,
 				40207C2C1D19D7750050EE55 /* Assets.xcassets */,
 				40207C2E1D19D7750050EE55 /* LaunchScreen.storyboard */,
@@ -143,6 +152,7 @@
 			files = (
 				40207C301D19D7750050EE55 /* LaunchScreen.storyboard in Resources */,
 				40207C2D1D19D7750050EE55 /* Assets.xcassets in Resources */,
+				552920A71D1C642C00756B64 /* beacon.png in Resources */,
 				40207C2B1D19D7750050EE55 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,8 +166,10 @@
 			files = (
 				40207C281D19D7750050EE55 /* ViewController.swift in Sources */,
 				40207C3C1D19D81E0050EE55 /* DataStructures.swift in Sources */,
+				552920A31D1C62D200756B64 /* SCLExtensions.swift in Sources */,
 				558D2BCF1D19E87000BC55DA /* PWDisplayLinker.swift in Sources */,
 				40207C261D19D7750050EE55 /* AppDelegate.swift in Sources */,
+				552920A21D1C62D200756B64 /* SCLAlertView.swift in Sources */,
 				40207C381D19D7A20050EE55 /* JMCBeaconManager.swift in Sources */,
 				40207C3A1D19D7B40050EE55 /* JMCBluetoothManager.swift in Sources */,
 				558D2BCE1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift in Sources */,
@@ -280,7 +292,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iBeaconManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jmc.iBeaconManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.iBeaconManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -294,7 +306,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iBeaconManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jmc.iBeaconManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.iBeaconManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

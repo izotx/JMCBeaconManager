@@ -22,18 +22,27 @@
                                 <rect key="frame" x="57" y="204" width="260" height="260"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Beacon ID: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnT-h7-4Qb">
+                                <rect key="frame" x="20" y="593" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rvb-KP-nQR" secondAttribute="bottom" constant="203" id="AhP-d0-AkO"/>
                             <constraint firstItem="Rvb-KP-nQR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="37" id="KYS-vP-ao6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rvb-KP-nQR" secondAttribute="trailing" constant="38" id="Ukh-qs-lQ7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wnT-h7-4Qb" secondAttribute="bottom" constant="53" id="ety-Qa-Vga"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="wnT-h7-4Qb" secondAttribute="leading" id="ig8-nz-Duc"/>
                             <constraint firstItem="Rvb-KP-nQR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="184" id="kYx-YU-Xg0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rvb-KP-nQR" secondAttribute="trailing" constant="38" id="lhT-c2-gld"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="beaconIDLabel" destination="wnT-h7-4Qb" id="rUZ-QS-aig"/>
                         <outlet property="squareView" destination="Rvb-KP-nQR" id="9sg-Je-CX4"/>
                     </connections>
                 </viewController>
