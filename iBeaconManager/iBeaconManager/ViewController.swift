@@ -10,8 +10,10 @@ import UIKit
 
 class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecognizerDelegate{
     
-    
+    /// label to show the seleced beacon's id
     @IBOutlet var beaconIDLabel: UILabel!
+    
+    /// RadarView
     @IBOutlet var squareView: SquareView!
     var tap : UITapGestureRecognizer!
     
@@ -32,36 +34,23 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // Display Linker delegate
         self.displayLinker = PWDisplayLinker(delegate: self)
+        
+        // Tap gesture 
         tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTap(_:)))
         tap.delegate = self
         
         squareView.addGestureRecognizer(tap)
         
         beaconManager.checkStatus()
-        ///Wait for notificatio
+        ///Wait for notification
         startMonitoring()
     
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsRanged(_:)), name: iBeaconNotifications.BeaconProximity.rawValue, object: nil)
         
-        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("removeOldBeacons"), userInfo: nil, repeats: true)
-    }
-    
-    func removeOldBeacons(){
-    
-        for id in beaconsDate.keys{
-            
-            let now = NSDate()
-            let beaconDate = beaconsDate[id]
-            let date = beaconDate?.addSeconds(4)
-        
-            
-            if date!.isLessThanDate(now) {
-                squareView.removeBeacon(beacons[id]!)
-                beacons.removeValueForKey(id)
-                beaconsDate.removeValueForKey(id)
-            }
-        }
+        // Removes old beacons
+        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(ViewController.removeOldBeacons), userInfo: nil, repeats: true)
     }
     
     func handleTap(sender: UITapGestureRecognizer? = nil) {
@@ -72,10 +61,6 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
                 
                 if beacon != nil{
                     self.beaconIDLabel.text = "Beacon ID: \(beacon!.id)"
-                    
-                    let color = UIColor.blueColor()
-                    let icon = UIImage(named: "beacon.png")
-                    SCLAlertView().showCustom("iBeacon", subTitle: "Beacon id: \(beacon!.id)", color:color, icon: icon!)
                 }
             })
         }
@@ -140,8 +125,21 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
         // Dispose of any resources that can be recreated.
     }
     
-    
-
+    func removeOldBeacons(){
+        
+        for id in beaconsDate.keys{
+            
+            let now = NSDate()
+            let beaconDate = beaconsDate[id]
+            let date = beaconDate?.addSeconds(4)
+            
+            if date!.isLessThanDate(now) {
+                squareView.removeBeacon(beacons[id]!)
+                beacons.removeValueForKey(id)
+                beaconsDate.removeValueForKey(id)
+            }
+        }
+    }
 }
 
 extension NSDate {
