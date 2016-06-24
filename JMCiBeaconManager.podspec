@@ -10,7 +10,7 @@ s.homepage         = 'https://github.com/appzzman/JMCBeaconManager.git'
 # s.screenshots     = 'https://github.com/appzzman/JMCBeaconManager/blob/pr/1/iPadGif.gif', 'https://raw.githubusercontent.com/appzzman/JMCBeaconManager/pr/1/iPhoneGif.gif'
 s.license          = { :type => 'MIT', :file => 'LICENSE' }
 s.author           = { 'FelipeNBrito' => 'felipenevesbrito@gmail.com' }
-s.source           = { :git => 'https://github.com/appzzman/JMCBeaconManager.git', :tag => s.version.to_s }
+s.source           = { :git => 'https://github.com/appzzman/JMCBeaconManager.git', :tag => s.version.to_s}
 
 s.ios.deployment_target = '8.0'
 
