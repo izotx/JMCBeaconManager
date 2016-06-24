@@ -2,15 +2,20 @@ PODS:
   - JMCiBeaconManager (0.1.0)
 
 DEPENDENCIES:
-  - JMCiBeaconManager (from `../`)
+  - JMCiBeaconManager (from `https://github.com/appzzman/JMCBeaconManager.git`)
 
 EXTERNAL SOURCES:
   JMCiBeaconManager:
-    :path: ../
+    :git: https://github.com/appzzman/JMCBeaconManager.git
+
+CHECKOUT OPTIONS:
+  JMCiBeaconManager:
+    :commit: 64df0bd7b39c225814e258d2afd4c07457d41bf4
+    :git: https://github.com/appzzman/JMCBeaconManager.git
 
 SPEC CHECKSUMS:
   JMCiBeaconManager: fe6e47706830f157789d42c0d8fd302921045e0f
 
-PODFILE CHECKSUM: 3eac29cf7df90da22251444944f1f965d873f585
+PODFILE CHECKSUM: 2f7f3a6b48a144e1a799aa12a308083419672a0b
 
 COCOAPODS: 1.0.0

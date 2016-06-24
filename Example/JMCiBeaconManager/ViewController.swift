@@ -6,8 +6,10 @@
 //  Copyright © 2016 Janusz Chudzynski. All rights reserved.
 //
 
+import JMCiBeaconManager
 import UIKit
 import CoreLocation
+
 
 class ViewController: UIViewController{
     

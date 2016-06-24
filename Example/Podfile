@@ -7,6 +7,6 @@ target 'JMCiBeaconManager_Example' do
 
   # Pods for JMCiBeaconManager_Example
   
-  pod 'JMCiBeaconManager', :git => 'https://github.com/appzzman/JMCBeaconManager/tree/master/JMCiBeaconManager'
+  pod 'JMCiBeaconManager', :git => 'https://github.com/appzzman/JMCBeaconManager.git'
 
 end
