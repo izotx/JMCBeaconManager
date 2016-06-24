@@ -1,0 +1,6 @@
+framework module Pods_JMCiBeaconManager_Example {
+  umbrella header "Pods-JMCiBeaconManager_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

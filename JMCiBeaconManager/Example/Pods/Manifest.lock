@@ -1,0 +1,16 @@
+PODS:
+  - JMCiBeaconManager (0.1.0)
+
+DEPENDENCIES:
+  - JMCiBeaconManager (from `../`)
+
+EXTERNAL SOURCES:
+  JMCiBeaconManager:
+    :path: ../
+
+SPEC CHECKSUMS:
+  JMCiBeaconManager: fe6e47706830f157789d42c0d8fd302921045e0f
+
+PODFILE CHECKSUM: 3eac29cf7df90da22251444944f1f965d873f585
+
+COCOAPODS: 1.0.0
