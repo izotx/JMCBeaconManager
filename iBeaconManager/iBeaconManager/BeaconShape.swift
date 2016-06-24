@@ -24,8 +24,18 @@ class BeaconShape {
     var distance: CLProximity!
     
     var point: CGPoint!
-    var radius: CGFloat = 15
-    
+    var radius: CGFloat
+        {
+            get{
+                if UIScreen.mainScreen().scale > 2{
+                    return 15
+                }
+                return 10
+            }
+            set{
+                
+            }
+        }
     var color = UIColor(red: 0.392, green: 1.000, blue: 0.050, alpha: 1.000)
     
     

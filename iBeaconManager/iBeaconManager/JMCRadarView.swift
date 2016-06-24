@@ -397,6 +397,9 @@ class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate
                 // builds a new shape
                 let shape = UIBezierPath(arcCenter: position, radius: beaconShape.radius, startAngle: CGFloat(0), endAngle: CGFloat(M_PI * 2), clockwise: true)
                 let shapeLayer = CAShapeLayer()
+             //    shapeLayer.contentsScale = UIScreen.mainScreen().scale
+            //    print(UIScreen.mainScreen().scale)
+
                 shapeLayer.path = shape.CGPath
                 
                 if selectedBeacon != nil && (selectedBeacon?.beacon.isEqual(beaconShape.beacon))!{
@@ -410,6 +413,7 @@ class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate
                 
                 beaconShape.shapeLayer = shapeLayer
                 beaconShape.point = position
+                
                 
                 // re adds the shape to screen
                 self.layer.addSublayer(shapeLayer)
