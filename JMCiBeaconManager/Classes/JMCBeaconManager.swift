@@ -215,7 +215,7 @@ enum iBeaconNotifications:String{
     *    a call to requestStateForRegion:.
     */
     
-    func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion)
+    public func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion)
     {
         
         //we found a beacon. Now
@@ -268,7 +268,7 @@ enum iBeaconNotifications:String{
     *    by the device.
     */
     
-    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion)
+    public func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion)
     {
         //Notify the delegates and etc that we know how far are we from the iBeacon
         if logging {
@@ -323,7 +323,7 @@ enum iBeaconNotifications:String{
     *    Invoked when an error has occurred ranging beacons in a region. Error types are defined in "CLError.h".
     */
 
-    func locationManager(manager: CLLocationManager, rangingBeaconsDidFailForRegion region: CLBeaconRegion, withError error: NSError)
+    public func locationManager(manager: CLLocationManager, rangingBeaconsDidFailForRegion region: CLBeaconRegion, withError error: NSError)
     {
         if logging {
             print("Ranging Fail\(region) \(error.debugDescription)")
@@ -338,7 +338,7 @@ enum iBeaconNotifications:String{
     *    Invoked when the user enters a monitored region.  This callback will be invoked for every allocated
     *    CLLocationManager instance with a non-nil delegate that implements this method.
     */
-    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion)
+    public func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion)
     {
         if region is CLBeaconRegion{
             if logging {
@@ -355,7 +355,7 @@ enum iBeaconNotifications:String{
     *    CLLocationManager instance with a non-nil delegate that implements this method.
     */
 
-    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion)
+    public func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion)
     {
         if region is CLBeaconRegion{
             if logging {
@@ -371,7 +371,7 @@ enum iBeaconNotifications:String{
     *    Invoked when an error has occurred. Error types are defined in "CLError.h".
     */
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
+    public func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
     {
        
             if logging {
@@ -386,7 +386,7 @@ enum iBeaconNotifications:String{
     *    Invoked when a region monitoring error has occurred. Error types are defined in "CLError.h".
     */
 
-    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError)
+    public func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError)
     {
         if logging {
             print("Monitoring Failed with error \(error)")
@@ -400,7 +400,7 @@ enum iBeaconNotifications:String{
     *    Invoked when the authorization status changes for this application.
     */
 
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
     {
         if status == CLAuthorizationStatus.AuthorizedAlways{
             if statusCheck().0 == true {
@@ -415,7 +415,7 @@ enum iBeaconNotifications:String{
     *    Invoked when a monitoring for a region started successfully.
     */
     
-    func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion)
+    public func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion)
     {
     
     }
@@ -424,7 +424,7 @@ enum iBeaconNotifications:String{
     *    Invoked when location updates are automatically paused.
     */
 
-    func locationManagerDidPauseLocationUpdates(manager: CLLocationManager)
+    public func locationManagerDidPauseLocationUpdates(manager: CLLocationManager)
     {
     
     }
@@ -436,7 +436,7 @@ enum iBeaconNotifications:String{
     *	  not receive this notification.
     */
     
-    func locationManagerDidResumeLocationUpdates(manager: CLLocationManager)
+    public func locationManagerDidResumeLocationUpdates(manager: CLLocationManager)
     {
     
     } 

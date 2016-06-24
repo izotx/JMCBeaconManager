@@ -31,7 +31,7 @@ public class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerD
     var selectedBeacon: BeaconShape?
     
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.displayLinker = PWDisplayLinker(delegate: self)
@@ -67,7 +67,7 @@ public class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerD
     }
     
     
-    override func drawRect(rect: CGRect) {
+    public override func drawRect(rect: CGRect) {
         
         let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
         
