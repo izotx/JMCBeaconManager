@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-public extension CLProximity {
+extension CLProximity {
     var sortIndex : Int {
         switch self {
         case .Immediate:
@@ -25,7 +25,7 @@ public extension CLProximity {
 }
 
 /**iBeacon*/
-public class iBeacon : NSObject {
+class iBeacon : NSObject {
     let minor:UInt16?
     let major:UInt16?
     var id:String // internal name //it will be used by firebase
