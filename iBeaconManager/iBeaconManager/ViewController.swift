@@ -7,20 +7,18 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecognizerDelegate{
+class ViewController: UIViewController{
     
     /// label to show the seleced beacon's id
     @IBOutlet var beaconIDLabel: UILabel!
     
     /// RadarView
     @IBOutlet var squareView: SquareView!
-    var tap : UITapGestureRecognizer!
     
     var beaconsDate: [String:NSDate] = [:]
     var beacons : [String:iBeacon] = [:]
-    
-    var displayLinker: PWDisplayLinker!
     
     //New instance
     let beaconManager = JMCBeaconManager()
@@ -29,48 +27,50 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
         beaconIDLabel.textColor = UIColor.whiteColor()
         
         self.view.backgroundColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
-        squareView.backgroundColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
-
         super.viewDidLoad()
-        // Display Linker delegate
-        self.displayLinker = PWDisplayLinker(delegate: self)
-        
-        // Tap gesture 
-        tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTap(_:)))
-        tap.delegate = self
-        
-        squareView.addGestureRecognizer(tap)
-        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsEnabled(_:)), name: iBeaconNotifications.iBeaconEnabled.rawValue, object: nil)
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsRanged(_:)), name: iBeaconNotifications.BeaconProximity.rawValue, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconTaped(_:)), name: JMCRadarNotifications.BeaconTapped.rawValue, object: nil)
 
         startMonitoring()
         
+        
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ViewController.addBeacon), userInfo: nil, repeats: false)
+        
+        NSTimer.scheduledTimerWithTimeInterval(5.5, target: self, selector: #selector(ViewController.addBeacon2), userInfo: nil, repeats: false)
     }
-
+    
+    func addBeacon(){
+        
+        let testBeacon = iBeacon(minor: 255, major: 255, proximityId: "Test1")
+        testBeacon.proximity = CLProximity.Far
+        testBeacon.id = "test1"
+        squareView.addBeacon(testBeacon)
+    }
+    
+    func addBeacon2(){
+        
+        let testBeacon2 = iBeacon(minor: 255, major: 255, proximityId: "Test2")
+        testBeacon2.proximity = .Near
+        testBeacon2.id = "test2"
+        squareView.addBeacon(testBeacon2)
+    }
 
     
     //MARK: notifications
     func beaconsEnabled(notification:NSNotification){
         ///Wait for notificatio
-      
-    
         
         // Removes old beacons
         NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(ViewController.removeOldBeacons), userInfo: nil, repeats: true)
 
     }
     
-    func handleTap(sender: UITapGestureRecognizer? = nil) {
-        
-        if sender != nil{
-            
-            squareView.handleTap(sender!.locationInView(squareView), completion: { (beacon) in
-                
-                if beacon != nil{
-                    self.beaconIDLabel.text = "Beacon ID: \(beacon!.id)"
-                }
-            })
+    func beaconTaped(notification: NSNotification) {
+        print("Notification Received")
+        if let beacon = notification.object as? iBeacon{
+            beaconIDLabel.text = beacon.id
         }
     }
 
@@ -92,9 +92,7 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
         }
     }
     
-    func displayWillUpdateWithDeltaTime(deltaTime: CFTimeInterval) {
-        self.squareView.moveBeacons() // Moves the beacons
-    }
+   
     
     func startMonitoring(){
         //check if enabled

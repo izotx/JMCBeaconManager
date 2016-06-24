@@ -7,7 +7,6 @@
 //
 
 import Foundation
-//import UIKit
 import QuartzCore
 
 class PWDisplayLinker: NSObject {
@@ -28,7 +27,6 @@ class PWDisplayLinker: NSObject {
         self.nextDeltaTimeZero = true
         self.previousTimestamp = 0.0
         self.ensureDisplayLinkIsOnRunLoop()
-    
     }
     
     override init() {
@@ -45,13 +43,7 @@ class PWDisplayLinker: NSObject {
         
         // calculate delta time
         var deltaTime: CFTimeInterval
-//        if (nextDeltaTimeZero != nil) {
-//            self.nextDeltaTimeZero = false
-//            deltaTime = 0.0
-//        }
-//        else {
-            deltaTime = currentTime - previousTimestamp
-//        }
+        deltaTime = currentTime - previousTimestamp
         // store the timestamp
         self.previousTimestamp = currentTime
         // inform the delegate
@@ -73,8 +65,5 @@ class PWDisplayLinker: NSObject {
             self.displayLink = nil
             self.nextDeltaTimeZero = true
         }
-    }
-    
-    
-    
+    }   
 }

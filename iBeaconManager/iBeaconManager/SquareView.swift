@@ -9,11 +9,17 @@
 import UIKit
 import CoreLocation
 
-class SquareView: UIView, UIGestureRecognizerDelegate{
+enum JMCRadarNotifications : String{
+    case BeaconTapped
+}
 
+class SquareView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate{
+    
+    var displayLinker: PWDisplayLinker!
+    var tap : UITapGestureRecognizer!
+    
     /// Stores a dictionary with the possible ranges (near, far, immediate....)
     var ranges : [CLProximity : DistanceRange] = [:]
-    
     
     /// Stores the radar's scanner shape
     var radarScannerShape: RadarScannerShape!
@@ -23,6 +29,43 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
     
     /// Current selecter beacon
     var selectedBeacon: BeaconShape?
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.displayLinker = PWDisplayLinker(delegate: self)
+        
+        //Tap gesture
+        tap = UITapGestureRecognizer(target: self, action: #selector(SquareView.handleTap(_:)))
+        tap.delegate = self
+        
+        backgroundColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
+        
+    }
+    
+    func handleTap(sender: UITapGestureRecognizer? = nil) {
+        print("tapped")
+        if sender != nil{
+            
+            let point = sender!.locationInView(self)
+            for range in ranges.values{
+                
+                for beacon in range.beacons{
+                    
+                    // Calculates a margin of error since the beacons are moving
+                    if beacon.point.x <= point.x + 30 && beacon.point.x >= point.x - 30{
+                        if beacon.point.y <= point.y + 30 && beacon.point.y >= point.y - 30{
+                            self.selectedBeacon = beacon
+                            
+                            NSNotificationCenter.defaultCenter().postNotificationName(JMCRadarNotifications.BeaconTapped.rawValue, object: beacon)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     
     override func drawRect(rect: CGRect) {
         
@@ -46,25 +89,6 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
         
         // Rotates the radar's scanner every 0.01 seconds
         NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(SquareView.rotateRadar), userInfo: nil, repeats: true)
-    }
-    
-    func handleTap(point: CGPoint, completion: (beacon: iBeacon?) -> Void) {
-        
-        for range in ranges.values{
-            
-            for beacon in range.beacons{
-            
-                // Calculates a margin of error since the beacons are moving
-                if beacon.point.x <= point.x + 30 && beacon.point.x >= point.x - 30{
-                    if beacon.point.y <= point.y + 30 && beacon.point.y >= point.y - 30{
-                        self.selectedBeacon = beacon
-                        completion(beacon: beacon.beacon)
-                    }
-                }
-            }
-        }
-        // nothing to do...
-        completion(beacon: nil)
     }
     
     func drawRadarScanner(center: CGPoint){
@@ -392,6 +416,10 @@ class SquareView: UIView, UIGestureRecognizerDelegate{
 
             }
         }
+    }
+    
+    func displayWillUpdateWithDeltaTime(deltaTime: CFTimeInterval) {
+        moveBeacons() // Moves the beacons
     }
 }
 
