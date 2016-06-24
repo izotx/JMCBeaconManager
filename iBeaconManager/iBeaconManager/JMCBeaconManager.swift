@@ -22,7 +22,7 @@ enum iBeaconNotifications:String{
 
 
 import CoreBluetooth
-
+/**Bluetooth manager - responsible for getting the status of Bluetooth.*/
 class BluetoothManager: NSObject, CBCentralManagerDelegate {
     
     var centralManager:CBCentralManager!
