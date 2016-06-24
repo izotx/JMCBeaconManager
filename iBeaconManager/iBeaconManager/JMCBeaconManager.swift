@@ -20,41 +20,6 @@ enum iBeaconNotifications:String{
 
 }
 
-
-import CoreBluetooth
-
-class BluetoothManager: NSObject, CBCentralManagerDelegate {
-    
-    var centralManager:CBCentralManager!
-    var blueToothReady = false
-    var callback:((Bool)->Void)!
-    var enabled = false
-    override init() {
-        super.init()
-
-       self.centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue(), options: [CBCentralManagerOptionShowPowerAlertKey:false])
-     }
-    
-    convenience init(callback:(Bool)->Void)
-    {
-        self.init()
-        self.callback = callback
-
-    }
-    @objc func centralManagerDidUpdateState(central: CBCentralManager) {
-        if central.state == .PoweredOn{
-            enabled = true
-            callback(true)
-        }
-        else{
-            enabled = false
-            callback(false)
-        }
-    }
-
-}
-
-
 /**Interacting with the iBeacons*/
 class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
 
@@ -65,7 +30,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     
     var stateCallback:((beacon:iBeacon)->Void)?
     var rangeCallback:((beacon:iBeacon)->Void)?
-    var bluetoothManager:BluetoothManager!
+    var bluetoothManager:BluetoothManager?
     
     var logging = true
     var broadcasting = true
@@ -90,33 +55,45 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
         //test if enabled
     }
     
-    /**Checks the status of the application*/
-    func checkStatus(){
-        //starts from Bluetooth
-        bluetoothManager = BluetoothManager()
-        bluetoothManager.callback = bluetoothUpdate
-    }
+
    
     
- 
+    
 
     /**Starts Monitoring for beacons*/
     func startMonitoring(successCallback:(()->Void), errorCallback:(messages:[String])->Void){
         self.successCallback = successCallback
         self.errorCallback = errorCallback
-        checkStatus()
+         checkStatus()
     }
     
+    /**Checks the status of the application*/
+    func checkStatus(){
+        //starts from Bluetooth
+        if let _ = self.bluetoothManager{
+        
+        }
+        else{
+            bluetoothManager = BluetoothManager()
+            bluetoothManager?.callback = bluetoothUpdate
+        }
+        
+    }
+    
+    
+   // var bluetoothManager
     
     /**Check Bluetooth*/
      private func bluetoothUpdate(status:Bool)->Void{
         if status == true{
+             bluetoothDisabled = false
             //rund additional status check
             let tuple = statusCheck()
             if tuple.0{
                self.successCallback?()
                NSNotificationCenter.defaultCenter().postNotificationName(iBeaconNotifications.iBeaconEnabled.rawValue, object: nil)
                startMonitoring()
+
             }
             else{
                 self.errorCallback?(messages: tuple.messages)
@@ -126,6 +103,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
         else{
             NSNotificationCenter.defaultCenter().postNotificationName(iBeaconNotifications.iBeaconDisabled.rawValue, object:nil)
             self.errorCallback?(messages: ["Bluetooth not enabled."])
+            bluetoothDisabled = true
         }
     }
     
@@ -135,6 +113,13 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         var check = true
         var messages = [String]()
+        
+        if bluetoothDisabled == true
+        {
+            messages.append("Bluetooth must be turned on.")
+            check = false
+        }
+        
         
         if CLLocationManager.authorizationStatus() != .AuthorizedAlways {
             if logging {
@@ -160,6 +145,8 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
         NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationBackgroundRefreshStatusDidChangeNotification, object: UIApplication.sharedApplication(), queue: nil) { (notification) -> Void in
             
         }
+        
+        
     }
     
     /**Register iBeacons*/
@@ -420,7 +407,11 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
 
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
     {
-        
+        if status == CLAuthorizationStatus.AuthorizedAlways{
+            if statusCheck().0 == true {
+                startMonitoring()
+            }
+        }
     }
     /*
     *  locationManager:didStartMonitoringForRegion:

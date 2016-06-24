@@ -15,6 +15,11 @@
 		40207C381D19D7A20050EE55 /* JMCBeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40207C371D19D7A20050EE55 /* JMCBeaconManager.swift */; };
 		40207C3A1D19D7B40050EE55 /* JMCBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40207C391D19D7B40050EE55 /* JMCBluetoothManager.swift */; };
 		40207C3C1D19D81E0050EE55 /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40207C3B1D19D81E0050EE55 /* DataStructures.swift */; };
+		552920AA1D1C7BAE00756B64 /* BeaconShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552920A91D1C7BAE00756B64 /* BeaconShape.swift */; };
+		552920AE1D1C7C0F00756B64 /* RadarScannerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552920AD1D1C7C0F00756B64 /* RadarScannerShape.swift */; };
+		558D2BCE1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D2BCB1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift */; };
+		558D2BCF1D19E87000BC55DA /* PWDisplayLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D2BCC1D19E87000BC55DA /* PWDisplayLinker.swift */; };
+		558D2BD01D19E87000BC55DA /* JMCRadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D2BCD1D19E87000BC55DA /* JMCRadarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,11 @@
 		40207C371D19D7A20050EE55 /* JMCBeaconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMCBeaconManager.swift; sourceTree = "<group>"; };
 		40207C391D19D7B40050EE55 /* JMCBluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMCBluetoothManager.swift; sourceTree = "<group>"; };
 		40207C3B1D19D81E0050EE55 /* DataStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
+		552920A91D1C7BAE00756B64 /* BeaconShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconShape.swift; sourceTree = "<group>"; };
+		552920AD1D1C7C0F00756B64 /* RadarScannerShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarScannerShape.swift; sourceTree = "<group>"; };
+		558D2BCB1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDisplayLinkerDelegate.swift; sourceTree = "<group>"; };
+		558D2BCC1D19E87000BC55DA /* PWDisplayLinker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDisplayLinker.swift; sourceTree = "<group>"; };
+		558D2BCD1D19E87000BC55DA /* JMCRadarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMCRadarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,7 @@
 		40207C241D19D7750050EE55 /* iBeaconManager */ = {
 			isa = PBXGroup;
 			children = (
+				552920A81D1C7B4C00756B64 /* Radar */,
 				40207C371D19D7A20050EE55 /* JMCBeaconManager.swift */,
 				40207C391D19D7B40050EE55 /* JMCBluetoothManager.swift */,
 				40207C3B1D19D81E0050EE55 /* DataStructures.swift */,
@@ -71,6 +82,26 @@
 				40207C311D19D7750050EE55 /* Info.plist */,
 			);
 			path = iBeaconManager;
+			sourceTree = "<group>";
+		};
+		552920A81D1C7B4C00756B64 /* Radar */ = {
+			isa = PBXGroup;
+			children = (
+				552920AB1D1C7BF800756B64 /* Shapes */,
+				558D2BCB1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift */,
+				558D2BCC1D19E87000BC55DA /* PWDisplayLinker.swift */,
+				558D2BCD1D19E87000BC55DA /* JMCRadarView.swift */,
+			);
+			name = Radar;
+			sourceTree = "<group>";
+		};
+		552920AB1D1C7BF800756B64 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				552920A91D1C7BAE00756B64 /* BeaconShape.swift */,
+				552920AD1D1C7C0F00756B64 /* RadarScannerShape.swift */,
+			);
+			name = Shapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +177,14 @@
 			files = (
 				40207C281D19D7750050EE55 /* ViewController.swift in Sources */,
 				40207C3C1D19D81E0050EE55 /* DataStructures.swift in Sources */,
+				558D2BCF1D19E87000BC55DA /* PWDisplayLinker.swift in Sources */,
 				40207C261D19D7750050EE55 /* AppDelegate.swift in Sources */,
 				40207C381D19D7A20050EE55 /* JMCBeaconManager.swift in Sources */,
 				40207C3A1D19D7B40050EE55 /* JMCBluetoothManager.swift in Sources */,
+				558D2BCE1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift in Sources */,
+				552920AE1D1C7C0F00756B64 /* RadarScannerShape.swift in Sources */,
+				558D2BD01D19E87000BC55DA /* JMCRadarView.swift in Sources */,
+				552920AA1D1C7BAE00756B64 /* BeaconShape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,10 +299,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iBeaconManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jmc.iBeaconManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.iBeaconManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -274,10 +313,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iBeaconManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jmc.iBeaconManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.iBeaconManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -300,6 +342,7 @@
 				40207C361D19D7750050EE55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
