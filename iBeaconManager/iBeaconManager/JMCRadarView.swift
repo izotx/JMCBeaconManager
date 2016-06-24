@@ -13,7 +13,7 @@ enum JMCRadarNotifications : String{
     case BeaconTapped
 }
 
-class SquareView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate{
+class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate{
     
     var displayLinker: PWDisplayLinker!
     var tap : UITapGestureRecognizer!
@@ -37,7 +37,7 @@ class SquareView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate{
         self.displayLinker = PWDisplayLinker(delegate: self)
         
         //Tap gesture
-        tap = UITapGestureRecognizer(target: self, action: #selector(SquareView.handleTap(_:)))
+        tap = UITapGestureRecognizer(target: self, action: #selector(JMCRadarView.handleTap(_:)))
         tap.delegate = self
         
         backgroundColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
@@ -88,7 +88,7 @@ class SquareView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate{
         drawLines(center, radius: self.bounds.width/2)
         
         // Rotates the radar's scanner every 0.01 seconds
-        NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(SquareView.rotateRadar), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(JMCRadarView.rotateRadar), userInfo: nil, repeats: true)
     }
     
     func drawRadarScanner(center: CGPoint){

@@ -19,7 +19,7 @@
 		552920AE1D1C7C0F00756B64 /* RadarScannerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552920AD1D1C7C0F00756B64 /* RadarScannerShape.swift */; };
 		558D2BCE1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D2BCB1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift */; };
 		558D2BCF1D19E87000BC55DA /* PWDisplayLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D2BCC1D19E87000BC55DA /* PWDisplayLinker.swift */; };
-		558D2BD01D19E87000BC55DA /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D2BCD1D19E87000BC55DA /* SquareView.swift */; };
+		558D2BD01D19E87000BC55DA /* JMCRadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D2BCD1D19E87000BC55DA /* JMCRadarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,7 @@
 		552920AD1D1C7C0F00756B64 /* RadarScannerShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarScannerShape.swift; sourceTree = "<group>"; };
 		558D2BCB1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDisplayLinkerDelegate.swift; sourceTree = "<group>"; };
 		558D2BCC1D19E87000BC55DA /* PWDisplayLinker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWDisplayLinker.swift; sourceTree = "<group>"; };
-		558D2BCD1D19E87000BC55DA /* SquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
+		558D2BCD1D19E87000BC55DA /* JMCRadarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMCRadarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 				552920AB1D1C7BF800756B64 /* Shapes */,
 				558D2BCB1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift */,
 				558D2BCC1D19E87000BC55DA /* PWDisplayLinker.swift */,
-				558D2BCD1D19E87000BC55DA /* SquareView.swift */,
+				558D2BCD1D19E87000BC55DA /* JMCRadarView.swift */,
 			);
 			name = Radar;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 				40207C3A1D19D7B40050EE55 /* JMCBluetoothManager.swift in Sources */,
 				558D2BCE1D19E87000BC55DA /* PWDisplayLinkerDelegate.swift in Sources */,
 				552920AE1D1C7C0F00756B64 /* RadarScannerShape.swift in Sources */,
-				558D2BD01D19E87000BC55DA /* SquareView.swift in Sources */,
+				558D2BD01D19E87000BC55DA /* JMCRadarView.swift in Sources */,
 				552920AA1D1C7BAE00756B64 /* BeaconShape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

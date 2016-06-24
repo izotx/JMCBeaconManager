@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rvb-KP-nQR" customClass="SquareView" customModule="iBeaconManager" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rvb-KP-nQR" customClass="JMCRadarView" customModule="iBeaconManager" customModuleProvider="target">
                                 <rect key="frame" x="57" y="204" width="260" height="260"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -43,7 +43,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="beaconIDLabel" destination="wnT-h7-4Qb" id="rUZ-QS-aig"/>
-                        <outlet property="squareView" destination="Rvb-KP-nQR" id="9sg-Je-CX4"/>
+                        <outlet property="radarView" destination="Rvb-KP-nQR" id="Ff4-zk-mol"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

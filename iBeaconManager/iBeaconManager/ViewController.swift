@@ -15,7 +15,7 @@ class ViewController: UIViewController{
     @IBOutlet var beaconIDLabel: UILabel!
     
     /// RadarView
-    @IBOutlet var squareView: SquareView!
+    @IBOutlet var radarView: JMCRadarView!
     
     var beaconsDate: [String:NSDate] = [:]
     var beacons : [String:iBeacon] = [:]
@@ -46,7 +46,7 @@ class ViewController: UIViewController{
         let testBeacon = iBeacon(minor: 255, major: 255, proximityId: "Test1")
         testBeacon.proximity = CLProximity.Far
         testBeacon.id = "test1"
-        squareView.addBeacon(testBeacon)
+        radarView.addBeacon(testBeacon)
     }
     
     func addBeacon2(){
@@ -54,7 +54,7 @@ class ViewController: UIViewController{
         let testBeacon2 = iBeacon(minor: 255, major: 255, proximityId: "Test2")
         testBeacon2.proximity = .Near
         testBeacon2.id = "test2"
-        squareView.addBeacon(testBeacon2)
+        radarView.addBeacon(testBeacon2)
     }
 
     
@@ -84,7 +84,7 @@ class ViewController: UIViewController{
         if let visibleIbeacons = notification.object as? [iBeacon]
         {
             for beacon in visibleIbeacons{
-                self.squareView.addBeacon(beacon)
+                self.radarView.addBeacon(beacon)
                 beaconsDate[beacon.id] = NSDate()
                 beacons[beacon.id] = beacon
                 print(NSDate().description)
@@ -143,7 +143,7 @@ class ViewController: UIViewController{
             let date = beaconDate?.addSeconds(4)
             
             if date!.isLessThanDate(now) {
-                squareView.removeBeacon(beacons[id]!)
+                radarView.removeBeacon(beacons[id]!)
                 beacons.removeValueForKey(id)
                 beaconsDate.removeValueForKey(id)
             }
