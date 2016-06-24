@@ -32,8 +32,6 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
         squareView.backgroundColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
 
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
         // Display Linker delegate
         self.displayLinker = PWDisplayLinker(delegate: self)
         
@@ -43,9 +41,18 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
         
         squareView.addGestureRecognizer(tap)
         
+        
         beaconManager.checkStatus()
-        ///Wait for notification
-        startMonitoring()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsEnabled(_:)), name: iBeaconNotifications.iBeaconEnabled.rawValue, object: nil)
+    }
+
+
+    
+    //MARK: notifications
+    func beaconsEnabled(notification:NSNotification){
+        ///Wait for notificatio
+      
     
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsRanged(_:)), name: iBeaconNotifications.BeaconProximity.rawValue, object: nil)
         
@@ -67,6 +74,11 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
         }
     }
 
+    func beaconsDisabled(notification:NSNotification){
+        
+    }
+
+    
     /**Called when the beacons are ranged*/
     func beaconsRanged(notification:NSNotification){
         if let visibleIbeacons = notification.object as? [iBeacon]
@@ -93,25 +105,22 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
         
         //major 2505 minor 36274
         beaconManager.registerBeacons([kontaktIOBeacon, estimoteBeacon])
-//        beaconManager.statusCheck()
-//        beaconManager.startMonitoring()
         
-        if beaconManager.statusCheck(){
-            beaconManager.startMonitoring()
+        beaconManager.startMonitoring({ 
+            
+            }) { (messages) in
+                    print("Error Messages \(messages)")
         }
+        
         
         /**updates user's visited places information*/
         func stateCallback(beacon:iBeacon)->Void{
-            // user.addLocation(beacon)
+            //FIXME - unused
         }
         
         /**updates user's visited places information*/
         func rangeCallback (beacon:iBeacon)->Void{
             //FIXME - unused
-            //  user.addLocation(beacon)
-            
-            
-            
         }
         
         beaconManager.stateCallback = stateCallback

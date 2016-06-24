@@ -69,10 +69,16 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     
     var logging = true
     var broadcasting = true
-    var bluetoothLabel = UILabel(frame: CGRectZero)
-    
+   
     //Different cases
     var bluetoothDisabled = true
+ 
+    /**Error Callback*/
+    var errorCallback:((messages:[String])->Void)?
+    
+    /**Success Callback*/
+    var successCallback:(()->Void)?
+    
     
     override init(){
     
@@ -91,70 +97,68 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
         bluetoothManager.callback = bluetoothUpdate
     }
    
+    
+ 
 
+    /**Starts Monitoring for beacons*/
+    func startMonitoring(successCallback:(()->Void), errorCallback:(messages:[String])->Void){
+        self.successCallback = successCallback
+        self.errorCallback = errorCallback
+        checkStatus()
+    }
     
     
     /**Check Bluetooth*/
-    func bluetoothUpdate(status:Bool)->Void{
-
-   
-        
-        if let app = UIApplication.sharedApplication().delegate as? AppDelegate, let window = app.window {
-
-            if status == true{
-                bluetoothLabel.removeFromSuperview()
-                //rund additional status check
-                statusCheck()
-                print("Authorized")
+     private func bluetoothUpdate(status:Bool)->Void{
+        if status == true{
+            //rund additional status check
+            let tuple = statusCheck()
+            if tuple.0{
+               self.successCallback?()
+               NSNotificationCenter.defaultCenter().postNotificationName(iBeaconNotifications.iBeaconEnabled.rawValue, object: nil)
+               startMonitoring()
             }
             else{
-                NSNotificationCenter.defaultCenter().postNotificationName(iBeaconNotifications.iBeaconDisabled.rawValue, object:nil)
-
-                
-//                bluetoothLabel.frame = CGRectMake(0, 0, 500, 40)
-//                bluetoothLabel.center = window.center
-//            //    bluetoothLabel.text = "PLEASE ENABLE BLUETOOTH"
-//                bluetoothLabel.font = UIFont.boldSystemFontOfSize(30)
-//                bluetoothLabel.textColor = UIColor.redColor()
-//
-//                window.addSubview(bluetoothLabel)
+                self.errorCallback?(messages: tuple.messages)
+                NSNotificationCenter.defaultCenter().postNotificationName(iBeaconNotifications.iBeaconDisabled.rawValue, object: tuple.messages)
             }
+        }
+        else{
+            NSNotificationCenter.defaultCenter().postNotificationName(iBeaconNotifications.iBeaconDisabled.rawValue, object:nil)
+            self.errorCallback?(messages: ["Bluetooth not enabled."])
         }
     }
     
     /**Checks if ibeacons are enabled. Should be called first*/
-   internal func statusCheck()->Bool{
+    private func statusCheck()->(Bool,messages:[String]){
         
         locationManager.requestAlwaysAuthorization()
         var check = true
+        var messages = [String]()
         
         if CLLocationManager.authorizationStatus() != .AuthorizedAlways {
             if logging {
                 print("Error - authorization status not enabled!")
             }
-            
+            messages.append("Location Services Must be Authorized.")
             check = false
-            return false
         }
         
         if !CLLocationManager.isMonitoringAvailableForClass(CLRegion){
             check = false
-            return false
+            messages.append("CLLocationManager monitoring is not enabled on this device.")
+
         }
     
-        NSNotificationCenter.defaultCenter().postNotificationName(iBeaconNotifications.iBeaconEnabled.rawValue, object: nil)
-
-        return check
+        return (check, messages)
     }
-    
+    //
     
     /**Register Notifications*/
     func registerNotifications()
     {
         NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationBackgroundRefreshStatusDidChangeNotification, object: UIApplication.sharedApplication(), queue: nil) { (notification) -> Void in
-            if self.statusCheck(){
-                self.startMonitoring()
-            }
+            
         }
     }
     
