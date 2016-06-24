@@ -9,11 +9,11 @@
 import UIKit
 import CoreLocation
 
-enum JMCRadarNotifications : String{
+public enum JMCRadarNotifications : String{
     case BeaconTapped
 }
 
-class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate{
+public class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate{
     
     var displayLinker: PWDisplayLinker!
     var tap : UITapGestureRecognizer!

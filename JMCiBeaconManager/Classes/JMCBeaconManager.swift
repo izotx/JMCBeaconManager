@@ -11,7 +11,7 @@ import CoreLocation
 
 
 /**Used to broadcast NSNotification*/
-enum iBeaconNotifications:String{
+public enum iBeaconNotifications:String{
     case BeaconProximity
     case BeaconState
     case Location // new location discoverd
@@ -21,7 +21,7 @@ enum iBeaconNotifications:String{
 }
 
 /**Interacting with the iBeacons*/
-class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
+public class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
 
     let locationManager:CLLocationManager = CLLocationManager()
 //    private var beacons = [iBeacon]() // Currently unused
