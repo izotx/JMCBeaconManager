@@ -41,10 +41,11 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
         
         squareView.addGestureRecognizer(tap)
         
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsEnabled(_:)), name: iBeaconNotifications.iBeaconEnabled.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsRanged(_:)), name: iBeaconNotifications.BeaconProximity.rawValue, object: nil)
+
+        startMonitoring()
         
-        beaconManager.checkStatus()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsEnabled(_:)), name: iBeaconNotifications.iBeaconEnabled.rawValue, object: nil)
     }
 
 
@@ -54,7 +55,6 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
         ///Wait for notificatio
       
     
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsRanged(_:)), name: iBeaconNotifications.BeaconProximity.rawValue, object: nil)
         
         // Removes old beacons
         NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(ViewController.removeOldBeacons), userInfo: nil, repeats: true)
@@ -103,6 +103,7 @@ class ViewController: UIViewController, PWDisplayLinkerDelegate, UIGestureRecogn
         let kontaktIOBeacon = iBeacon(minor: nil, major: nil, proximityId: "f7826da6-4fa2-4e98-8024-bc5b71e0893e")
         let estimoteBeacon = iBeacon(minor: nil, major: nil, proximityId: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")
         
+      
         //major 2505 minor 36274
         beaconManager.registerBeacons([kontaktIOBeacon, estimoteBeacon])
         
