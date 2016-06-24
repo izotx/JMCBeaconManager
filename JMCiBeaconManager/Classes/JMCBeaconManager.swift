@@ -308,7 +308,7 @@ enum iBeaconNotifications:String{
     
     
     /**Update Location*/
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let location = locations.last{
             print("Update Location to \(location)")
