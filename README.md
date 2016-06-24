@@ -4,6 +4,9 @@ An iBeacon Manager class is responsible for detecting and simulating beacons nea
 ## Example 
 
 ![alt tag](https://github.com/appzzman/JMCBeaconManager/blob/pr/1/iPadGif.gif)
+![alt tag](https://raw.githubusercontent.com/appzzman/JMCBeaconManager/pr/1/iPhoneGif.gif)
+
+
 
 
 ## Usage
