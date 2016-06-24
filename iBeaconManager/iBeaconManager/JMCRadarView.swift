@@ -383,6 +383,8 @@ class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate
         
             for beaconShape in range.beacons{
                 
+            
+                
                 ///Removes the beacon from screen
                 if beaconShape.shapeLayer != nil{
                     beaconShape.shapeLayer.removeFromSuperlayer()

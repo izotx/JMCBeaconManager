@@ -17,6 +17,7 @@ class ViewController: UIViewController{
     /// RadarView
     @IBOutlet var radarView: JMCRadarView!
     
+    
     var beaconsDate: [String:NSDate] = [:]
     var beacons : [String:iBeacon] = [:]
     

@@ -43,7 +43,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="beaconIDLabel" destination="wnT-h7-4Qb" id="rUZ-QS-aig"/>
-                        <outlet property="radarView" destination="Rvb-KP-nQR" id="Ff4-zk-mol"/>
+                        <outlet property="radarView" destination="Rvb-KP-nQR" id="gsd-U2-UNk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
