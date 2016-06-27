@@ -30,7 +30,7 @@ Felipe N. Brito, <felipenevesbrito@gmail.com>
 
 ## License
 
-JMCiBeaconManager is available under the MIT license. See the LICENSE file for more info.
+JMCiBeaconManager is available under the BSD license. See the LICENSE file for more info.
 
 
 ## Usage
@@ -45,7 +45,11 @@ beaconManager.registerBeacons([kontaktIOBeacon, estimoteBeacon])
 
 NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconsRanged(_:)), name: iBeaconNotifications.BeaconProximity.rawValue, object: nil)
 
-beaconManager.startMonitoring()
+beaconManager.startMonitoring({ 
+            
+    }) { (messages) in
+        print("Error Messages \(messages)")
+}
 
 /**Called when the beacons are ranged*/
 func beaconsRanged(notification:NSNotification){
