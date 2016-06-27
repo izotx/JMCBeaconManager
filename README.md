@@ -25,6 +25,7 @@ pod "JMCiBeaconManager"
 ## Authors
 
 Janusz Chudzynski, <jchudzynski@uwf.edu>
+
 Felipe N. Brito, <felipenevesbrito@gmail.com>
 
 ## License
