@@ -28,11 +28,11 @@ public class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     /**Storing reference to registered regions*/
     private var regions = [CLBeaconRegion]()
     
-    var stateCallback:((beacon:iBeacon)->Void)?
-    var rangeCallback:((beacon:iBeacon)->Void)?
+    public var stateCallback:((beacon:iBeacon)->Void)?
+    public var rangeCallback:((beacon:iBeacon)->Void)?
     var bluetoothManager:BluetoothManager?
     
-    var logging = true
+    public var logging = true
     var broadcasting = true
    
     //Different cases

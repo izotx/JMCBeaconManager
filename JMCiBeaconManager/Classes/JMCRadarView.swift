@@ -276,7 +276,7 @@ public class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerD
         self.layer.addSublayer(shapeLayer)
     }
     
-    func removeBeacon(beacon: iBeacon){
+    public func removeBeacon(beacon: iBeacon){
         // Checks if the beacon already exists
         for range in ranges.values{
             var index = 0
@@ -297,7 +297,7 @@ public class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerD
     }
 
     
-    func addBeacon(beacon: iBeacon){
+    public func addBeacon(beacon: iBeacon){
         
         
         // Checks if the beacon already exists

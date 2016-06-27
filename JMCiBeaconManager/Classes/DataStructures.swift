@@ -28,11 +28,11 @@ public extension CLProximity {
 public class iBeacon : NSObject {
     let minor:UInt16?
     let major:UInt16?
-    var id:String // internal name //it will be used by firebase
+    public var id:String // internal name //it will be used by firebase
     var readeableId:String = ""
     let UUID: String //Beacons uuid
     /**Default proximity*/
-    var proximity: CLProximity  = CLProximity.Unknown
+    public var proximity: CLProximity  = CLProximity.Unknown
     /**Default state*/
     var state:CLRegionState = CLRegionState.Unknown
     
