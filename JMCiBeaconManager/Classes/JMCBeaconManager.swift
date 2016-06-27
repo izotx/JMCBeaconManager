@@ -11,7 +11,7 @@ import CoreLocation
 
 
 /**Used to broadcast NSNotification*/
-enum iBeaconNotifications:String{
+public enum iBeaconNotifications:String{
     case BeaconProximity
     case BeaconState
     case Location // new location discoverd
@@ -20,7 +20,8 @@ enum iBeaconNotifications:String{
 
 }
 
-/**Interacting with the iBeacons*/public class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
+/**Interacting with the iBeacons*/
+public class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
 
     let locationManager:CLLocationManager = CLLocationManager()
 //    private var beacons = [iBeacon]() // Currently unused
@@ -44,7 +45,7 @@ enum iBeaconNotifications:String{
     var successCallback:(()->Void)?
     
     
-    override init(){
+    override public init(){
     
         super.init()
 //        bluetoothManager.callback = bluetoothUpdate
@@ -56,7 +57,7 @@ enum iBeaconNotifications:String{
     
 
     /**Starts Monitoring for beacons*/
-    func startMonitoring(successCallback:(()->Void), errorCallback:(messages:[String])->Void){
+    public func startMonitoring(successCallback:(()->Void), errorCallback:(messages:[String])->Void){
         self.successCallback = successCallback
         self.errorCallback = errorCallback
          checkStatus()
@@ -145,7 +146,7 @@ enum iBeaconNotifications:String{
     }
     
     /**Register iBeacons*/
-    func registerBeacons(beacons:[iBeacon])
+    public func registerBeacons(beacons:[iBeacon])
     {
         
         for beacon in beacons{
@@ -172,7 +173,7 @@ enum iBeaconNotifications:String{
 
     
     /**Register iBeacons*/
-    func registerBeacon(beaconId:String)
+    public func registerBeacon(beaconId:String)
     {
         
         let bid = CLBeaconRegion(proximityUUID:  NSUUID(UUIDString:beaconId)!, identifier: "Testing Beacon")

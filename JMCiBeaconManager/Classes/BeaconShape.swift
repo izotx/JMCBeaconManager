@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class BeaconShape {
+public class BeaconShape {
     
     var shapeLayer : CAShapeLayer!
     var id = ""
