@@ -48,11 +48,11 @@
 		490F4B835AF93D8817636156A7CF2B27 /* JMCiBeaconManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JMCiBeaconManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5166A374E35772EF38263DEAF135EBD3 /* JMCiBeaconManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JMCiBeaconManager-umbrella.h"; sourceTree = "<group>"; };
 		52A093EC5240CCD127C6E8E82BE02F53 /* Pods-JMCiBeaconManager_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JMCiBeaconManager_Example-dummy.m"; sourceTree = "<group>"; };
+		55719B641D2171DD00CA3140 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FA4EC605D424CAA311C058C6D2BBD72 /* Pods-JMCiBeaconManager_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JMCiBeaconManager_Example-frameworks.sh"; sourceTree = "<group>"; };
 		71160DE573567E950D4F64A3086A0B79 /* Pods-JMCiBeaconManager_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JMCiBeaconManager_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		72D212FB3B6B8769BBCEB68D77B8A3F6 /* Pods-JMCiBeaconManager_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JMCiBeaconManager_Example-umbrella.h"; sourceTree = "<group>"; };
 		8D2371322452BE271A66B69979512279 /* PWDisplayLinker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PWDisplayLinker.swift; path = JMCiBeaconManager/Classes/PWDisplayLinker.swift; sourceTree = "<group>"; };
-		90FA5E269F3604C9AF130FDDFDC8055E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A3D4017B6EF7A594FDAAD36AE6C820B6 /* JMCBeaconManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JMCBeaconManager.swift; path = JMCiBeaconManager/Classes/JMCBeaconManager.swift; sourceTree = "<group>"; };
 		B1D43AAD1E3953A9AC7BE1D4F5449492 /* JMCBluetoothManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JMCBluetoothManager.swift; path = JMCiBeaconManager/Classes/JMCBluetoothManager.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		B4CC3FC7B8429BB9FC73FC74662544E9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				90FA5E269F3604C9AF130FDDFDC8055E /* Info.plist */,
+				55719B641D2171DD00CA3140 /* Info.plist */,
 				0BCCA19E5CAD31DE25B583DC83722AD2 /* JMCiBeaconManager.modulemap */,
 				263AFD16995C69E705B1BC2B5C1E44E4 /* JMCiBeaconManager.xcconfig */,
 				CC235B5226B662509C2671205FB310BA /* JMCiBeaconManager-dummy.m */,

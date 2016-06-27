@@ -15,9 +15,12 @@ class ViewController: UIViewController{
     
     /// label to show the seleced beacon's id
     @IBOutlet var beaconIDLabel: UILabel!
+
     
     /// RadarView
     @IBOutlet var radarView: JMCRadarView!
+
+
     
     
     var beaconsDate: [String:NSDate] = [:]

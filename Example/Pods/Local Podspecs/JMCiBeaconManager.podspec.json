@@ -1,6 +1,6 @@
 {
   "name": "JMCiBeaconManager",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "summary": "An iBeacon Manager class is responsible for detecting and simulating beacons nearby.",
   "description": "An iBeacon Manager class is responsible for detecting and simulating beacons nearby. With RadarView.",
   "homepage": "https://github.com/appzzman/JMCBeaconManager.git",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/appzzman/JMCBeaconManager.git",
-    "tag": "0.1.5"
+    "tag": "0.1.6"
   },
   "platforms": {
     "ios": "8.0"

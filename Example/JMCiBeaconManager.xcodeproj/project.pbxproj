@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		55719B541D1DC1B400CA3140 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719B531D1DC1B400CA3140 /* AppDelegate.swift */; };
 		55719B561D1DC1D200CA3140 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719B551D1DC1D200CA3140 /* ViewController.swift */; };
-		55719B581D1DC81C00CA3140 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55719B571D1DC81C00CA3140 /* Test.swift */; };
 		55719B5E1D1DCAE600CA3140 /* JMCiBeaconManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55719B591D1DCAAD00CA3140 /* JMCiBeaconManager.framework */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
@@ -33,7 +32,6 @@
 		4FFD7EBC544C19DD557AC51E /* Pods_JMCiBeaconManager_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JMCiBeaconManager_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55719B531D1DC1B400CA3140 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55719B551D1DC1D200CA3140 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		55719B571D1DC81C00CA3140 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		55719B591D1DCAAD00CA3140 /* JMCiBeaconManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JMCiBeaconManager.framework; path = "../../../../Library/Developer/Xcode/DerivedData/JMCiBeaconManager-bcsockwaaimeihfhpymxnpllbhim/Build/Products/Debug-iphonesimulator/JMCiBeaconManager/JMCiBeaconManager.framework"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* JMCiBeaconManager_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JMCiBeaconManager_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
-				55719B571D1DC81C00CA3140 /* Test.swift */,
 			);
 			name = "Example for JMCiBeaconManager";
 			path = JMCiBeaconManager;
@@ -314,7 +311,6 @@
 			files = (
 				55719B561D1DC1D200CA3140 /* ViewController.swift in Sources */,
 				55719B541D1DC1B400CA3140 /* AppDelegate.swift in Sources */,
-				55719B581D1DC81C00CA3140 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
