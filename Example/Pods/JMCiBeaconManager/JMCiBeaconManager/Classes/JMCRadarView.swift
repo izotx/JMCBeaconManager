@@ -9,11 +9,11 @@
 import UIKit
 import CoreLocation
 
-enum JMCRadarNotifications : String{
+public enum JMCRadarNotifications : String{
     case BeaconTapped
 }
 
-class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate{
+public class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate{
     
     var displayLinker: PWDisplayLinker!
     var tap : UITapGestureRecognizer!
@@ -31,7 +31,7 @@ class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate
     var selectedBeacon: BeaconShape?
     
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.displayLinker = PWDisplayLinker(delegate: self)
@@ -67,7 +67,7 @@ class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerDelegate
     }
     
     
-    override func drawRect(rect: CGRect) {
+    public override func drawRect(rect: CGRect) {
         
         let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
         

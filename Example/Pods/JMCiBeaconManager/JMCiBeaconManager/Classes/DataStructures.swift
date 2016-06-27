@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-extension CLProximity {
+public extension CLProximity {
     var sortIndex : Int {
         switch self {
         case .Immediate:
@@ -25,7 +25,7 @@ extension CLProximity {
 }
 
 /**iBeacon*/
-class iBeacon : NSObject {
+public class iBeacon : NSObject {
     let minor:UInt16?
     let major:UInt16?
     var id:String // internal name //it will be used by firebase
@@ -38,7 +38,7 @@ class iBeacon : NSObject {
     
     
     
-    init(beacon:CLBeacon) {
+    public init(beacon:CLBeacon) {
         self.UUID = beacon.proximityUUID.UUIDString
         self.minor = beacon.minor.unsignedShortValue
         self.major = beacon.major.unsignedShortValue
@@ -49,7 +49,7 @@ class iBeacon : NSObject {
     }
     
     /**Initializer*/
-    init(minor:UInt16?, major:UInt16?, proximityId:String){
+    public init(minor:UInt16?, major:UInt16?, proximityId:String){
         
         self.UUID = proximityId
         self.major = major
@@ -66,16 +66,16 @@ class iBeacon : NSObject {
     }
     
     
-    override var description:String{
+    override public var description:String{
         return debugDescription
     }
     
-    override var debugDescription:String{
+    override public var debugDescription:String{
         
         return "\(self.UUID)--\(self.major)--\(self.minor)"
     }
     
-    override func isEqual(object: AnyObject?) -> Bool {
+    override public func isEqual(object: AnyObject?) -> Bool {
         
         if let minor = self.minor{
             let minorBool = (minor  == (object as! iBeacon).minor)

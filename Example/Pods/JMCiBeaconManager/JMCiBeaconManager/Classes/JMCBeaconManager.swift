@@ -11,7 +11,7 @@ import CoreLocation
 
 
 /**Used to broadcast NSNotification*/
-enum iBeaconNotifications:String{
+public enum iBeaconNotifications:String{
     case BeaconProximity
     case BeaconState
     case Location // new location discoverd
@@ -21,7 +21,7 @@ enum iBeaconNotifications:String{
 }
 
 /**Interacting with the iBeacons*/
-class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
+public class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
 
     let locationManager:CLLocationManager = CLLocationManager()
 //    private var beacons = [iBeacon]() // Currently unused
@@ -45,7 +45,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     var successCallback:(()->Void)?
     
     
-    override init(){
+    override public init(){
     
         super.init()
 //        bluetoothManager.callback = bluetoothUpdate
@@ -56,12 +56,8 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     }
     
 
-   
-    
-    
-
     /**Starts Monitoring for beacons*/
-    func startMonitoring(successCallback:(()->Void), errorCallback:(messages:[String])->Void){
+    public func startMonitoring(successCallback:(()->Void), errorCallback:(messages:[String])->Void){
         self.successCallback = successCallback
         self.errorCallback = errorCallback
          checkStatus()
@@ -150,7 +146,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     }
     
     /**Register iBeacons*/
-    func registerBeacons(beacons:[iBeacon])
+    public func registerBeacons(beacons:[iBeacon])
     {
         
         for beacon in beacons{
@@ -177,7 +173,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
 
     
     /**Register iBeacons*/
-    func registerBeacon(beaconId:String)
+    public func registerBeacon(beaconId:String)
     {
         
         let bid = CLBeaconRegion(proximityUUID:  NSUUID(UUIDString:beaconId)!, identifier: "Testing Beacon")
@@ -220,7 +216,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     *    a call to requestStateForRegion:.
     */
     
-    func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion)
+    public func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion)
     {
         
         //we found a beacon. Now
@@ -273,7 +269,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     *    by the device.
     */
     
-    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion)
+    public func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion)
     {
         //Notify the delegates and etc that we know how far are we from the iBeacon
         if logging {
@@ -313,7 +309,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     
     
     /**Update Location*/
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let location = locations.last{
             print("Update Location to \(location)")
@@ -328,7 +324,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     *    Invoked when an error has occurred ranging beacons in a region. Error types are defined in "CLError.h".
     */
 
-    func locationManager(manager: CLLocationManager, rangingBeaconsDidFailForRegion region: CLBeaconRegion, withError error: NSError)
+    public func locationManager(manager: CLLocationManager, rangingBeaconsDidFailForRegion region: CLBeaconRegion, withError error: NSError)
     {
         if logging {
             print("Ranging Fail\(region) \(error.debugDescription)")
@@ -343,7 +339,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     *    Invoked when the user enters a monitored region.  This callback will be invoked for every allocated
     *    CLLocationManager instance with a non-nil delegate that implements this method.
     */
-    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion)
+    public func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion)
     {
         if region is CLBeaconRegion{
             if logging {
@@ -360,7 +356,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     *    CLLocationManager instance with a non-nil delegate that implements this method.
     */
 
-    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion)
+    public func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion)
     {
         if region is CLBeaconRegion{
             if logging {
@@ -376,7 +372,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     *    Invoked when an error has occurred. Error types are defined in "CLError.h".
     */
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
+    public func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
     {
        
             if logging {
@@ -391,7 +387,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     *    Invoked when a region monitoring error has occurred. Error types are defined in "CLError.h".
     */
 
-    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError)
+    public func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError)
     {
         if logging {
             print("Monitoring Failed with error \(error)")
@@ -405,7 +401,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     *    Invoked when the authorization status changes for this application.
     */
 
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
     {
         if status == CLAuthorizationStatus.AuthorizedAlways{
             if statusCheck().0 == true {
@@ -420,7 +416,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     *    Invoked when a monitoring for a region started successfully.
     */
     
-    func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion)
+    public func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion)
     {
     
     }
@@ -429,7 +425,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     *    Invoked when location updates are automatically paused.
     */
 
-    func locationManagerDidPauseLocationUpdates(manager: CLLocationManager)
+    public func locationManagerDidPauseLocationUpdates(manager: CLLocationManager)
     {
     
     }
@@ -441,7 +437,7 @@ class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     *	  not receive this notification.
     */
     
-    func locationManagerDidResumeLocationUpdates(manager: CLLocationManager)
+    public func locationManagerDidResumeLocationUpdates(manager: CLLocationManager)
     {
     
     } 
