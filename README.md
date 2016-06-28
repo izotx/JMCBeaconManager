@@ -8,9 +8,37 @@ An iBeacon Manager class that is responsible for detecting beacons nearby. 🔶
 ![alt tag](https://github.com/appzzman/JMCBeaconManager/blob/pr/1/iPadGif.gif)
 ![alt tag](https://raw.githubusercontent.com/appzzman/JMCBeaconManager/pr/1/iPhoneGif.gif)
 
-## Example
 
+## Example
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+## Requirements
+
+## Installation
+
+#### CocoaPods
+JMCiBeaconManager is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "JMCiBeaconManager"
+```
+
+#### Manually
+1. Download and drop ```/JMCiBeaconManager```folder in your project.  
+2. Congratulations! 
+
+## Authors
+
+Janusz Chudzynski, <janusz@izotx.com>
+
+Felipe N. Brito, <felipenevesbrito@gmail.com>
+
+## License
+
+JMCiBeaconManager is available under the BSD license. See the LICENSE file for more info.
+>>>>>>> 85fa31c06a863870a02c6d18a8c15b35c13d38dd
+
 
 ## Usage
 
