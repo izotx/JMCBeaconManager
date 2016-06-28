@@ -1,37 +1,16 @@
 # JMCiBeaconManager
+An iBeacon Manager class that is responsible for detecting beacons nearby. 🔶
 
 [![Version](https://img.shields.io/cocoapods/v/JMCiBeaconManager.svg?style=flat)](http://cocoapods.org/pods/JMCiBeaconManager)
 [![License](https://img.shields.io/cocoapods/l/JMCiBeaconManager.svg?style=flat)](http://cocoapods.org/pods/JMCiBeaconManager)
 [![Platform](https://img.shields.io/cocoapods/p/JMCiBeaconManager.svg?style=flat)](http://cocoapods.org/pods/JMCiBeaconManager)
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ![alt tag](https://github.com/appzzman/JMCBeaconManager/blob/pr/1/iPadGif.gif)
 ![alt tag](https://raw.githubusercontent.com/appzzman/JMCBeaconManager/pr/1/iPhoneGif.gif)
 
-## Requirements
+## Example
 
-## Installation
-
-JMCiBeaconManager is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "JMCiBeaconManager"
-```
-
-## Authors
-
-Janusz Chudzynski, <jchudzynski@uwf.edu>
-
-Felipe N. Brito, <felipenevesbrito@gmail.com>
-
-## License
-
-JMCiBeaconManager is available under the BSD license. See the LICENSE file for more info.
-
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Usage
 
@@ -62,3 +41,24 @@ func beaconsRanged(notification:NSNotification){
 
 
 ```
+
+## Requirements
+
+## Installation
+
+JMCiBeaconManager is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "JMCiBeaconManager"
+```
+
+## Authors
+
+Janusz Chudzynski, <jchudzynski@uwf.edu>
+
+Felipe N. Brito, <felipenevesbrito@gmail.com>
+
+## License
+
+JMCiBeaconManager is available under the ```BSD``` license. See the ```LICENSE``` file for more info.
