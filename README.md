@@ -1,5 +1,5 @@
 # JMCiBeaconManager
-An iBeacon Manager class that is responsible for detecting beacons nearby. 🔶
+> An iBeacon Manager class that is responsible for detecting beacons nearby. 🔶
 
 [![Version](https://img.shields.io/cocoapods/v/JMCiBeaconManager.svg?style=flat)](http://cocoapods.org/pods/JMCiBeaconManager)
 [![License](https://img.shields.io/cocoapods/l/JMCiBeaconManager.svg?style=flat)](http://cocoapods.org/pods/JMCiBeaconManager)
@@ -11,8 +11,6 @@ An iBeacon Manager class that is responsible for detecting beacons nearby. 🔶
 
 ## Example
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
 
 ## Installation
 
@@ -28,21 +26,12 @@ pod "JMCiBeaconManager"
 1. Download and drop ```/JMCiBeaconManager```folder in your project.  
 2. Congratulations! 
 
-## Authors
-
-Janusz Chudzynski, <janusz@izotx.com>
-
-Felipe N. Brito, <felipenevesbrito@gmail.com>
-
-## License
-
-JMCiBeaconManager is available under the BSD license. See the LICENSE file for more info.
->>>>>>> 85fa31c06a863870a02c6d18a8c15b35c13d38dd
-
 
 ## Usage
 
 ```Swift 
+import JMCiBeaconManager
+
 let beaconManager = JMCBeaconManager()
 
 let kontaktIOBeacon = iBeacon(minor: nil, major: nil, proximityId: "f7826da6-4fa2-4e98-8024-bc5b71e0893e")
@@ -70,23 +59,22 @@ func beaconsRanged(notification:NSNotification){
 
 ```
 
-## Requirements
-
-## Installation
-
-JMCiBeaconManager is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "JMCiBeaconManager"
-```
-
 ## Authors
 
-Janusz Chudzynski, <jchudzynski@uwf.edu>
+Janusz Chudzynski, <janusz@izotx.com>
 
 Felipe N. Brito, <felipenevesbrito@gmail.com>
+
+## Contribute
+
+We would love for you to contribute to **JMCiBeaconManager**, check the ``LICENSE`` file for more info.
+
+## Requirements
+
+- iOS 8.0+
+- Xcode 7.3
 
 ## License
 
 JMCiBeaconManager is available under the ```BSD``` license. See the ```LICENSE``` file for more info.
+
