@@ -15,12 +15,17 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
+#### CocoaPods
 JMCiBeaconManager is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod "JMCiBeaconManager"
 ```
+
+#### Manually
+1. Download and drop ```/JMCiBeaconManager```folder in your project.  
+2. Congratulations! 
 
 ## Authors
 
