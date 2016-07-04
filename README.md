@@ -1,7 +1,8 @@
 # JMCiBeaconManager
 > iBeacon is a name of technology that is enabling new location awareness possibilities for apps.
 "Leveraging Bluetooth Low Energy (BLE), a device with iBeacon technology 
-can be used to establish a region around an object. This allows an iOS device to determine when it has entered or left the region, along with an estimation of proximity to a beacon." 
+can be used to establish a region around an object. This allows an iOS device to determine when it has entered or left the region, along with an estimation of proximity to a beacon."  
+🔶
 
 An iBeacon Manager library was created to simplify your interactions with iBeacons. In essence it serves several roles:
 
@@ -10,7 +11,7 @@ An iBeacon Manager library was created to simplify your interactions with iBeaco
 3. Detecting nearby beacons 
 4. Visualizing nearby beacons in a radar look like custom made user interface.
 
-that is responsible for detecting beacons nearby. 🔶
+ 
 
 [![Version](https://img.shields.io/cocoapods/v/JMCiBeaconManager.svg?style=flat)](http://cocoapods.org/pods/JMCiBeaconManager)
 [![License](https://img.shields.io/cocoapods/l/JMCiBeaconManager.svg?style=flat)](http://cocoapods.org/pods/JMCiBeaconManager)
