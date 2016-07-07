@@ -71,6 +71,11 @@ func beaconsRanged(notification:NSNotification){
 
 ```
 
+
+Add the key ```NSLocationAlwaysUsageDescription``` to your project info.plist file in order
+
+![alt tag](https://raw.githubusercontent.com/izotx/JMCBeaconManager/master/NSLocationAlwaysUsageDescription.png)
+
 ## Authors
 
 Janusz Chudzynski, <janusz@izotx.com>
