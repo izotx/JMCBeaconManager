@@ -1,0 +1,6 @@
+framework module JMCiBeaconManager {
+  umbrella header "JMCiBeaconManager-umbrella.h"
+
+  export *
+  module * { export * }
+}
