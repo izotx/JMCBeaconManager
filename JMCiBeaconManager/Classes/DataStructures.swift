@@ -66,15 +66,15 @@ public class iBeacon : NSObject {
     private(set) public var readeableId:String = ""
     
     /// iBeacon UUID
-    let UUID: String
+    public let UUID: String
     
     
     /// Default proximity
-    private(set) public var proximity: CLProximity  = CLProximity.Unknown
+    internal(set) public var proximity: CLProximity  = CLProximity.Unknown
     
     
     /// Default state
-    private(set) public var state:CLRegionState = CLRegionState.Unknown
+    internal(set) public var state:CLRegionState = CLRegionState.Unknown
     
     
     
