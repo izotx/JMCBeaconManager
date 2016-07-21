@@ -100,6 +100,17 @@ public class iBeacon : NSObject {
         self.id = generateId()
     }
     
+    
+    /**Initializer*/
+    public init(minor:UInt16?, major:UInt16?, proximityId:String, id:String){
+        
+        self.UUID = proximityId
+        self.major = major
+        self.minor = minor
+        self.id = id
+        super.init()
+    }
+    
     /**
      
      Generate a unique id based on the iBecon's paramaters
