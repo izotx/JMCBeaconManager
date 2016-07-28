@@ -441,4 +441,12 @@ public class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     {
     
     } 
+    
+    /*
+    **  Returns true is the beacon is inside the required range, false otherwise
+    **
+    */
+    public static func isInRange( objectProximity : CLProximity, requiredProximity: CLProximity) -> Bool {
+       return  objectProximity.sortIndex <= requiredProximity.sortIndex
+    }
 }
