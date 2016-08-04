@@ -74,7 +74,7 @@ class ViewController: UIViewController{
     }
     
     func beaconTaped(notification: NSNotification) {
-        print("Notification Received")
+        print("Notification Received \(notification.object)")
         if let beacon = notification.object as? iBeacon{
             beaconIDLabel.text = beacon.id
         }
