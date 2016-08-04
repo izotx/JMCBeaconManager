@@ -42,9 +42,9 @@ class ViewController: UIViewController{
         startMonitoring()
         
         
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ViewController.addBeacon), userInfo: nil, repeats: false)
-        
-        NSTimer.scheduledTimerWithTimeInterval(5.5, target: self, selector: #selector(ViewController.addBeacon2), userInfo: nil, repeats: false)
+//        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ViewController.addBeacon), userInfo: nil, repeats: false)
+//        
+//        NSTimer.scheduledTimerWithTimeInterval(5.5, target: self, selector: #selector(ViewController.addBeacon2), userInfo: nil, repeats: false)
     }
     
     func addBeacon(){
