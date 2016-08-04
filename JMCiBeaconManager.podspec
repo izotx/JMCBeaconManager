@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'JMCiBeaconManager'
-s.version          = '1.0.2'
+s.version          = '1.0.4'
 s.summary          = 'An iBeacon Manager class is responsible for detecting and simulating beacons nearby.'
 
 s.description      = 'An iBeacon Manager class is responsible for detecting and simulating beacons nearby. With RadarView.'
