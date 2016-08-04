@@ -197,8 +197,8 @@ public class JMCBeaconManager: NSObject, CLLocationManagerDelegate {
     
     }
 
-    /**Starts monitoring beacons*/
-    func stopMonitoring(){
+    /**Stops monitoring beacons*/
+    public func stopMonitoring(){
         for beaconRegion in regions{
             locationManager.stopMonitoringForRegion(beaconRegion)
             locationManager.stopRangingBeaconsInRegion(beaconRegion)          
