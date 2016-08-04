@@ -39,7 +39,6 @@ public class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerD
         //Tap gesture
         tap = UITapGestureRecognizer(target: self, action: #selector(JMCRadarView.handleTap(_:)))
         tap.delegate = self
-        self.addGestureRecognizer(tap)
         
         backgroundColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
         
@@ -59,7 +58,7 @@ public class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerD
                         if beacon.point.y <= point.y + 30 && beacon.point.y >= point.y - 30{
                             self.selectedBeacon = beacon
                             
-                            NSNotificationCenter.defaultCenter().postNotificationName(JMCRadarNotifications.BeaconTapped.rawValue, object: beacon.beacon)
+                            NSNotificationCenter.defaultCenter().postNotificationName(JMCRadarNotifications.BeaconTapped.rawValue, object: beacon)
                         }
                     }
                 }

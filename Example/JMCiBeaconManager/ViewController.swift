@@ -47,21 +47,21 @@ class ViewController: UIViewController{
 //        NSTimer.scheduledTimerWithTimeInterval(5.5, target: self, selector: #selector(ViewController.addBeacon2), userInfo: nil, repeats: false)
     }
     
-    func addBeacon(){
-        
-        let testBeacon = iBeacon(minor: 255, major: 255, proximityId: "Test1")
-        testBeacon.proximity = CLProximity.Far
-        testBeacon.id = "test1"
-        radarView.addBeacon(testBeacon)
-    }
-    
-    func addBeacon2(){
-        
-        let testBeacon2 = iBeacon(minor: 255, major: 255, proximityId: "Test2")
-        testBeacon2.proximity = .Near
-        testBeacon2.id = "test2"
-        radarView.addBeacon(testBeacon2)
-    }
+//    func addBeacon(){
+//        
+//        let testBeacon = iBeacon(minor: 255, major: 255, proximityId: "Test1")
+//        testBeacon.proximity = CLProximity.Far
+//        testBeacon.id = "test1"
+//        radarView.addBeacon(testBeacon)
+//    }
+//    
+//    func addBeacon2(){
+//        
+//        let testBeacon2 = iBeacon(minor: 255, major: 255, proximityId: "Test2")
+//        testBeacon2.proximity = .Near
+//        testBeacon2.id = "test2"
+//        radarView.addBeacon(testBeacon2)
+//    }
 
     
     //MARK: notifications

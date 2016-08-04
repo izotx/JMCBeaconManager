@@ -6,7 +6,7 @@ target 'JMCiBeaconManager_Example' do
   use_frameworks!
 
   # Pods for JMCiBeaconManager_Example
-  
-  pod 'JMCiBeaconManager', :git => 'https://github.com/appzzman/JMCBeaconManager.git', :tag => '1.0.0'
+
+  pod 'JMCiBeaconManager'
 
 end
