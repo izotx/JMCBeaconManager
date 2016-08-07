@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -19,15 +20,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBM-yt-toJ">
-                                <rect key="frame" x="479" y="534" width="240" height="128"/>
+                                <rect key="frame" x="-37" y="-96" width="85" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7YA-33-Ijs" customClass="JMCRadarView" customModule="JMCiBeaconManager">
-                                <rect key="frame" x="67" y="214" width="240" height="240"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YA-33-Ijs" customClass="JMCRadarView" customModule="JMCiBeaconManager">
+                                <rect key="frame" x="63" y="214" width="248" height="240"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7YA-33-Ijs" secondAttribute="height" multiplier="31:30" id="5Wx-SG-tzI"/>
+                                    <constraint firstAttribute="width" constant="248" id="Ru5-ZO-DyN"/>
+                                    <constraint firstAttribute="height" constant="240" id="ogt-hI-1GX"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaT-lp-HLz">
-                                <rect key="frame" x="20" y="626" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaT-lp-HLz">
+                                <rect key="frame" x="16" y="626" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -35,12 +41,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7YA-33-Ijs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="47" id="3Iq-v0-em4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7YA-33-Ijs" secondAttribute="trailing" constant="48" id="K74-SY-cvx"/>
+                            <constraint firstItem="7YA-33-Ijs" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="0Yt-pC-TKS"/>
+                            <constraint firstItem="7YA-33-Ijs" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="Iz0-Q1-c9I"/>
                             <constraint firstItem="yaT-lp-HLz" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="606" id="NPE-YM-k4t"/>
-                            <constraint firstItem="7YA-33-Ijs" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="194" id="gsf-uk-adP"/>
                             <constraint firstAttribute="leadingMargin" secondItem="yaT-lp-HLz" secondAttribute="leading" id="iYD-zL-oP9"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="7YA-33-Ijs" secondAttribute="bottom" constant="213" id="yX6-Kj-sHd"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
