@@ -39,6 +39,7 @@ public class JMCRadarView: UIView, UIGestureRecognizerDelegate, PWDisplayLinkerD
         //Tap gesture
         tap = UITapGestureRecognizer(target: self, action: #selector(JMCRadarView.handleTap(_:)))
         tap.delegate = self
+        self.addGestureRecognizer(tap)
         
         backgroundColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
         
